@@ -7,9 +7,12 @@ const apiKeyValidator = require('./middleware/apiKeyValidator');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const RATE_LIMIT_WINDOW = process.env.RATE_LIMIT_WINDOW || 15 * 60 * 1000; 
+const RATE_LIMIT_MAX = process.env.RATE_LIMIT_MAX || 100;
+
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
+    windowMs: RATE_LIMIT_WINDOW,
+    max: RATE_LIMIT_MAX,
     message: {"error":"Too many requests from this IP, please try again later."},
     standardHeaders: true,
     legacyHeaders: false,
