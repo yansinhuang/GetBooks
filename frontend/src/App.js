@@ -10,11 +10,18 @@ const App = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const API_URL = process.env.REACT_APP_API_URL;
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   // Function to fetch books data from the API
   const fetchBooks = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/books?filter=${filter}`);
+      const response = await axios.get(`${API_URL}/books?filter=${filter}`, {
+        headers: {
+          'x-api-key': API_KEY
+        },
+      },);
       setBooks(response.data);
       setError('');
     } catch (error) {
