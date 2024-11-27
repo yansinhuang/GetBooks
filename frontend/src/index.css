@@ -1,0 +1,60 @@
+/* Container Styling */
+.container {
+    margin-top: 20px;
+  }
+  
+  .paper {
+    padding: 20px;
+  }
+  
+  /* Switch Styling */
+  .switchContainer {
+    margin-bottom: 20px;
+  }
+  
+  /* Error Alert Styling */
+  .errorAlert {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .reloadButton {
+    margin-left: 10px;
+  }
+  
+  /* Loading Spinner */
+  .loadingContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Category Section */
+  .categoryContainer {
+    margin-bottom: 30px;
+  }
+  
+  .divider {
+    margin-bottom: 10px;
+  }
+  
+  /* Book Paper Styling */
+  .bookPaper {
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Book Type Label Styling */
+  .bookType {
+    background-color: #fff3e0;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  
+  .bookType.hardcover {
+    background-color: #c8e6c9;
+  }
+  
