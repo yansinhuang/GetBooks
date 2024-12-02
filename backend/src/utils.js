@@ -3,35 +3,25 @@ function categorizeAndSortBooks(data, filter) {
   validateData(data);
 
   const categories = { Adults: [], Children: [] };
-  data.forEach(({ age, books }) => {
-      const category = age >= 18 ? 'Adults' : 'Children';
 
-      books.forEach((book) => {
-          if (!filter || book.type.toLowerCase() === filter.toLowerCase()) {
-              const bookInfo = { Name: book.name, Type: book.type };
-              insertInSortedOrder(categories[category], bookInfo);
-          }
-      });
+  // Categorize the books into Adults or Children
+  data.forEach(({ age, books }) => {
+    const category = age >= 18 ? 'Adults' : 'Children';
+
+    books.forEach((book) => {
+      if (!filter || book.type.toLowerCase() === filter.toLowerCase()) {
+        const bookInfo = { Name: book.name, Type: book.type };
+        categories[category].push(bookInfo);
+      }
+    });
   });
 
-  return categories;
-}
-
-// Binary search insertion point to maintain sorted order
-function insertInSortedOrder(array, book) {
-  let left = 0;
-  let right = array.length;
-
-  while (left < right) {
-      const mid = Math.floor((left + right) / 2);
-      if (array[mid].Name < book.Name) {
-          left = mid + 1;
-      } else {
-          right = mid;
-      }
+  // Sort books alphabetically within each category
+  for (const category in categories) {
+    categories[category].sort((a, b) => a.Name.localeCompare(b.Name));
   }
 
-  array.splice(left, 0, book);
+  return categories;
 }
 
 // Validates the response data structure from the API
