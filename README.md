@@ -73,6 +73,12 @@ Returns a JSON object with two categories: **Adults** and **Children**. Each cat
 ```
 
 ## Assumptions
+1. The external API returns a manageable amount of data that can be entirely fetched, stored, and processed in memory without causing performance bottlenecks.
+2. The external API is always available and does not introduce downtime during usage except the 429 error.
+3. The external API is reliable and trusted, no malicious input.
+4. The application will be used by a small number of users at a time.
+5. The application is for internal use only and the data being provided is shared voluntarily by individuals who are aware of its use.
+6. Hardcover is the only book type we are interested in.
 ### Valid JSON Response:
 
 The Bupa Coding Test API is expected to return valid JSON data in the following structure.
