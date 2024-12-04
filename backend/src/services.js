@@ -1,6 +1,10 @@
 const axios = require('axios');
+const axiosRetry = require('axios-retry').default;
 const { categorizeAndSortBooks } = require('./utils');
 require('dotenv').config();
+
+// Retry to avoid rate limit
+axiosRetry(axios, { retryDelay: axiosRetry.exponentialDelay });
 
 // Fetch and process books
 async function getBooks(filter) {
